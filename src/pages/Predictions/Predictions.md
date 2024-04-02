@@ -8,11 +8,11 @@ Create and select **scenarios**
 <scenario|part|render={selected_scenario}|
 # **Prediction**{: .color-primary} page
 
-<|1 1|layout|
+<|3 5|layout|
 <date|
 #### Level
 
-A parameter to choose how pessimistic or optimistic your predictions will be.
+A parameter to choose how holidays impact your predictions.
 
 <|{selected_level}|slider|on_change=on_change_params|not continuous|min=70|max=150|>
 |date>
@@ -20,9 +20,13 @@ A parameter to choose how pessimistic or optimistic your predictions will be.
 <country|
 #### **Holiday**{: .color-primary}
 
-Choose if there is an holiday coming
+Upload the CSV of employee holidays:
 
-<|{selected_holiday}|toggle|label=Holiday|on_change=on_change_params|>
+<|expandable|title=Holidays|expanded=False|
+<|{dn_holiday}|data_node|>
+|>
+
+<|{selected_holiday}|file_selector|label=Holiday|on_action=on_change_params|>
 |country>
 |>
 
@@ -34,13 +38,6 @@ Run your scenario
 
 ## **Predictions**{: .color-primary} and explorer of data nodes
 
-<|Data Nodes|expandable|
-<|1 5|layout|
-<|{selected_data_node}|data_node_selector|> 
-
-<|{selected_data_node}|data_node|>
-|>
-|>
-
+<|{dn_result}|data_node|>
 |scenario>
 |>

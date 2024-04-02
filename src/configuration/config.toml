@@ -6,7 +6,7 @@ scope = "GLOBAL:SCOPE"
 path = "data/modified_supermarkt_sales_plus.csv"
 
 [DATA_NODE.holiday]
-default_data = "False:bool"
+storage_type = "csv"
 
 [DATA_NODE.level]
 default_data = "1:int"

@@ -17,33 +17,36 @@ Please refer to https://docs.taipy.io/en/latest/manuals/gui/pages for more detai
 """
 
 from taipy.gui import Markdown, notify
+import pandas as pd
 
 
-selected_data_node = None
+dn_holiday = None
+dn_result = None
+
 selected_scenario = None
-selected_holiday = False
+selected_holiday = None
 selected_level = 100
 
 def on_submission_change(state, submitable, details):
     if details['submission_status'] == 'COMPLETED':
         notify(state, "success", "Predictions ready!")
-        print("Predictions ready!")
-    elif details['submission_status'] == 'FAILED':
-        notify(state, "error", "Submission failed!")
-        print("Submission failed!")
-    else:
-        notify(state, "info", "In progress...")
-        print("In progress...")
+        state.dn_result = state.selected_scenario.result
 
 
-def on_change_params(state): 
+
+def on_change_params(state):
+    holiday = pd.read_csv(state.selected_holiday) if state.selected_holiday else None
     state.selected_scenario.level.write(state.selected_level/100)
-    state.selected_scenario.holiday.write(state.selected_holiday)
+    state.selected_scenario.holiday.write(holiday)
+    state.dn_holiday = state.selected_scenario.holiday
     notify(state, "success", "Scenario parameters changed!")
+
+    state.refresh('selected_scenario')
 
 def on_change(state, var_name, var_value):
     if var_name == 'selected_scenario' and var_value:
         state.selected_level = state.selected_scenario.level.read()*100
-        state.selected_holiday = state.selected_scenario.holiday.read()
+        state.dn_holiday = state.selected_scenario.holiday
+        state.dn_result = state.selected_scenario.result
 
 Predictions = Markdown("pages/Predictions/Predictions.md")

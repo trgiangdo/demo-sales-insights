@@ -24,4 +24,3 @@
 <|Data|expandable|expanded=False|
 <|{data}|table|>
 |>
-

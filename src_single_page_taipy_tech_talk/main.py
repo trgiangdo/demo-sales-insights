@@ -19,11 +19,9 @@ def create_bar_figure(data, group_by: str):
     return fig
 
 def create_sales_by_city_map(data):
-    # mapbox_access_token = ...
-    # px.set_mapbox_access_token(mapbox_access_token)
     city_sales = data.groupby('City').agg({'Total': 'sum', 'Latitude': 'mean', 'Longitude': 'mean'}).reset_index()
     fig = px.scatter_mapbox(city_sales, lat="Latitude", lon="Longitude", size="Total", color="Total", text="City",
-                            zoom=5, center={"lat": 18.7, "lon": 98.9}, mapbox_style="dark", title='Total Sales by City', size_max=50)
+                            zoom=5, center={"lat": 18.7, "lon": 98.9}, mapbox_style="open-street-map", title='Total Sales by City', size_max=50)
     fig.update_layout(title={'text': "Total Sales by City", 'y': 0.9, 'x': 0.5, 'xanchor': 'center', 'yanchor': 'top'},
                       legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
                       margin={"r": 0, "t": 0, "l": 0, "b": 0})
@@ -76,23 +74,24 @@ def on_selector(state):
     state.fig_customer_type_perc = create_perc_fig(filtered_data, 'Customer_type')
 
 
-
-
 with tgb.Page() as page:
-    tgb.text("Sales Insights", class_name="h1")
+    tgb.text("# Sales Insights", mode="md")
 
     with tgb.layout("1 1 1"):
         with tgb.part():
-            tgb.text("Total Sales", class_name="h2")
-            tgb.text("{int(data['Total'].sum())}", class_name="h3")
+            tgb.text("## Total Sales", mode="md")
+            tgb.text("### {int(data['Total'].sum())}", mode="md")
 
         with tgb.part():
-            tgb.text("Average Sales", class_name="h2")
-            tgb.text("{int(data['Total'].mean())}", class_name="h3")
+            tgb.text("## Average Sales", mode="md")
+            tgb.text("### {int(data['Total'].mean())}", mode="md")
 
         with tgb.part():
-            tgb.text("Mean Rating", class_name="h2")
-            tgb.text("{int(data['Rating'].mean())}", class_name="h3")
+            tgb.text("## Mean Rating", mode="md")
+            tgb.text("### {int(data['Rating'].mean())}", mode="md")
+
+    with tgb.expandable(title="Data", expanded=False):
+        tgb.table("{data}")
 
     tgb.chart(figure="{fig_map}")
 
@@ -104,7 +103,7 @@ with tgb.Page() as page:
     tgb.chart(figure="{fig_time}")
     tgb.chart(figure="{fig_date}")
 
-    tgb.text("Analysis", class_name="h2")
+    tgb.text("## Analysis", mode="md")
 
     tgb.selector(value="{city}", lov=["Bangkok", "Chiang Mai", "Vientiane", "Luang Prabang", "Yangon", "Naypyitaw"],
                  dropdown=True,
@@ -119,8 +118,8 @@ with tgb.Page() as page:
         tgb.chart(figure="{fig_gender_perc}")
         tgb.chart(figure="{fig_customer_type_perc}")
 
-    tgb.table("{data}")
 
+    
 
 if __name__ == "__main__":
     gui = Gui(page)

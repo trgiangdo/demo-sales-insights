@@ -42,9 +42,8 @@ def preprocess(initial_data, holiday, level):
     final_data = data[['Date','Total']]
     final_data = add_features(final_data)
 
-    final_data['Total'] = final_data['Total']*level
-    if holiday:
-        final_data['Total'] *= 0.8
+    if holiday is not None:
+        final_data['Total'] *= np.mean(holiday)/level
 
     date = final_data['Date'].max()
     return final_data, date
@@ -79,7 +78,6 @@ def forecast_xgboost(model, date):
     X.drop('Date', axis=1, inplace=True)
     predictions = model.predict(X)
     return predictions
-
 
 def concat(final_data, predictions_arima, predictions_xgboost):
     date = final_data['Date'].max()

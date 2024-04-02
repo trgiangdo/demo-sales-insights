@@ -32,12 +32,11 @@ initial_data_cfg = Config.configure_data_node(id="initial_data",
                                               path=path_to_data,
                                               scope=Scope.GLOBAL)
 
-holiday_cfg = Config.configure_data_node(id="holiday", default_data=False)
+holiday_cfg = Config.configure_data_node(id="holiday", storage_type="csv")
 level_cfg = Config.configure_data_node(id="level", default_data=1)
 date_cfg = Config.configure_data_node(id="date")
 
 final_data_cfg =  Config.configure_data_node(id="final_data")
-
 
 model_arima_cfg = Config.configure_data_node(id="model_arima")
 model_xgboost_cfg = Config.configure_data_node(id="model_xgboost")

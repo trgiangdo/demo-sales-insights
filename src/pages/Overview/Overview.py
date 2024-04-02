@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly.express as px
 import taipy.gui.builder as tgb
+import os
 
 # Load the dataset
 data = pd.read_csv('data/modified_supermarkt_sales_plus.csv')
@@ -16,10 +17,9 @@ def create_bar_figure(data, group_by):
     fig = px.bar(sales_over_time, x=group_by, y='Total', title='Sales Trends Over Time', color='Total')
     return fig
 
-import os
 
 def create_sales_by_city_map(data):
-    mapbox_access_token = os.environ.get('MAPBOX_ACCESS_TOKEN')
+    mapbox_access_token = ...
     px.set_mapbox_access_token(mapbox_access_token)
     city_sales = data.groupby('City').agg({'Total': 'sum', 'Latitude': 'mean', 'Longitude': 'mean'}).reset_index()
     fig = px.scatter_mapbox(city_sales, lat="Latitude", lon="Longitude", size="Total", color="Total", text="City",
