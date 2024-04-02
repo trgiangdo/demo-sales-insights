@@ -19,11 +19,9 @@ def create_bar_figure(data, group_by):
 
 
 def create_sales_by_city_map(data):
-    mapbox_access_token = ...
-    px.set_mapbox_access_token(mapbox_access_token)
     city_sales = data.groupby('City').agg({'Total': 'sum', 'Latitude': 'mean', 'Longitude': 'mean'}).reset_index()
     fig = px.scatter_mapbox(city_sales, lat="Latitude", lon="Longitude", size="Total", color="Total", text="City",
-                            zoom=5, center={"lat": 18.7, "lon": 98.9}, mapbox_style="dark", title='Total Sales by City', size_max=50)
+                            zoom=5, center={"lat": 18.7, "lon": 98.9}, mapbox_style="carto-darkmatter", title='Total Sales by City', size_max=50)
     fig.update_layout(title={'text': "Total Sales by City", 'y': 0.9, 'x': 0.5, 'xanchor': 'center', 'yanchor': 'top'},
                       legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
                       margin={"r": 0, "t": 0, "l": 0, "b": 0})
