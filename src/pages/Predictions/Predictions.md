@@ -22,9 +22,8 @@ A parameter to choose how holidays impact your predictions.
 
 Upload the CSV of employee holidays:
 
-<|expandable|title=Holidays|expanded=False|
-<|{dn_holiday}|data_node|>
-|>
+<|{dn_holiday}|data_node|expanded=False|>
+
 
 <|{selected_holiday}|file_selector|label=Holiday|on_action=on_change_params|>
 |country>

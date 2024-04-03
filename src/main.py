@@ -39,5 +39,5 @@ if __name__ == "__main__":
     # #############################################################################
 
     gui = Gui(pages=pages)
-    gui.run(title="Sales", use_reloader=True, port=2452)
+    gui.run(title="Sales", port=2452)
     

@@ -28,7 +28,9 @@ selected_holiday = None
 selected_level = 100
 
 def on_submission_change(state, submitable, details):
+    print(submitable, details)
     if details['submission_status'] == 'COMPLETED':
+        print("Predictions ready!")
         notify(state, "success", "Predictions ready!")
         state.dn_result = state.selected_scenario.result
 
@@ -38,6 +40,8 @@ def on_change_params(state):
     holiday = pd.read_csv(state.selected_holiday) if state.selected_holiday else None
     state.selected_scenario.level.write(state.selected_level/100)
     state.selected_scenario.holiday.write(holiday)
+    state.dn_holiday = state.selected_scenario.holiday
+    state.dn_holiday = None 
     state.dn_holiday = state.selected_scenario.holiday
     notify(state, "success", "Scenario parameters changed!")
 
