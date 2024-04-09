@@ -27,7 +27,6 @@ def create_sales_by_city_map(data):
                       margin={"r": 0, "t": 0, "l": 0, "b": 0})
     return fig
 
-
 def create_perc_fig(df, group_column):
     # Group, sum, and convert to percentage
     df = df.groupby(['Month_Year', group_column])['Total'].sum().unstack(fill_value=0)
@@ -47,8 +46,6 @@ fig_customer_type = create_pie_figure(data, 'Customer_type')
 
 fig_time = create_bar_figure(data, 'Time')
 fig_date = create_bar_figure(data, 'Date')
-
-
 
 
 city = ["Bangkok", "Chiang Mai", "Vientiane", "Luang Prabang", "Yangon", "Naypyitaw"]
@@ -118,9 +115,7 @@ with tgb.Page() as page:
         tgb.chart(figure="{fig_gender_perc}")
         tgb.chart(figure="{fig_customer_type_perc}")
 
-
     
-
 if __name__ == "__main__":
     gui = Gui(page)
     gui.run(title="Sales", port=2452)
