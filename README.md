@@ -15,20 +15,24 @@ The logic and idea, as well as part of the code of this application, come from S
 
 ## What is demo Sales Dashboard
 
-Taipy is a  low-code Python library for creating Business Applications. More information on our [website](https://www.taipy.io).
+Three folders corresponding to three applications can be found in this repository. There are the same 
+application at different steps of production. One application is a simple one page dashboard.
+The second show how to convert it to a multi-page dashboard where you can integrate data and run scenarios 
+with predictions. The last shows how you can leverage Taipy Enterprise to create authentication and 
+authorization inside your application.
 
-[Demo Sales Dashboard](https://github.com/Avaiga/demo-sales-dashboard) demonstrates how Taipy can read an Excel file and show interesting results. This will the base of our DataViz application. The user can filter it based on city, customer, and gender. This allows users to see metrics specific to certain groups of people or locations. For example, one's can view the data to see sales metrics for customers in a particular city or sales metrics depending on gender.
+[Demo Sales Dashboard](https://github.com/Avaiga/demo-sales-dashboard) demonstrates how Taipy can read an Excel or a CSV file and show interesting results. This will the base of our DataViz application. The user can filter it based on city, customer, and gender. This allows users to see metrics specific to certain groups of people or locations. For example, one's can view the data to see sales metrics for customers in a particular city or sales metrics depending on gender.
 
-Two charts are shown on the Web app: sales by hour or sales by product. These graphs can help users identify trends and patterns in the data.
+Many charts are shown on the Web app: sales by hour or sales by product. These graphs can help users identify trends and patterns in the data.
 
-Overall, this demo of Excel-based app creation allows users to quickly and easily create an app that displays important metrics and charts from their Excel data. The ability to filter it by various criteria makes it easy to gain insights and make informed decisions.
+Overall, this demo of Excel/CSV-based app creation allows users to quickly and easily create an app that displays important metrics and charts from their Excel data. The ability to filter it by various criteria makes it easy to gain insights and make informed decisions.
 
 
 ### Demo Type
-- **Level**: Basic
-- **Topic**: Taipy-GUI
+- **Level**: Medium
+- **Topic**: Taipy
 - **Components/Controls**: 
-  - Taipy GUI: selector, chart, interactive elements
+  - Taipy GUI: selector, chart, interactive elements, scenario, 
 
 ## How to run
 
@@ -38,8 +42,9 @@ This demo works with a Python version superior to 3.8. Install the dependencies 
 ## Directory Structure
 
 
-- `src/`: Contains the demo source code.
-  - `src/data`: Contains the application data files. An Excel can be found here.
+- `src/`: Contains the demo source code of the multi-page version.
+- `src_single_page_taipy_tech_talk/`: Contains the demo source code of the single page version.
+- `src_enterprise/`: Contains the demo source code of the multi-page version with authentication and authorization.
 - `docs/`: contains the images for the documentation
 - `CODE_OF_CONDUCT.md`: Code of conduct for members and contributors of _demo-sales-dashboard_.
 - `CONTRIBUTING.md`: Instructions to contribute to _demo-sales-dashboard_.
