@@ -27,21 +27,18 @@ selected_scenario = None
 selected_holiday = None
 selected_level = 100
 
-def on_submission_change(state, submitable, details):
-    print(submitable, details)
-    if details['submission_status'] == 'COMPLETED':
-        print("Predictions ready!")
-        notify(state, "success", "Predictions ready!")
-        state.dn_result = state.selected_scenario.result
 
+def on_submission_change(state, submitable, details):
+    if details['submission_status'] == 'COMPLETED':
+        state.dn_result = state.selected_scenario.result
+        notify(state, "success", "Predictions ready!")
+        print("Predictions ready!")
 
 
 def on_change_params(state):
     holiday = pd.read_csv(state.selected_holiday) if state.selected_holiday else None
     state.selected_scenario.level.write(state.selected_level/100)
     state.selected_scenario.holiday.write(holiday)
-    state.dn_holiday = state.selected_scenario.holiday
-    state.dn_holiday = None 
     state.dn_holiday = state.selected_scenario.holiday
     notify(state, "success", "Scenario parameters changed!")
 
@@ -52,5 +49,6 @@ def on_change(state, var_name, var_value):
         state.selected_level = state.selected_scenario.level.read()*100
         state.dn_holiday = state.selected_scenario.holiday
         state.dn_result = state.selected_scenario.result
+
 
 Predictions = Markdown("pages/Predictions/Predictions.md")

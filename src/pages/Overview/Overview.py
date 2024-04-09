@@ -3,8 +3,10 @@ import plotly.express as px
 import taipy.gui.builder as tgb
 import os
 
+
 # Load the dataset
 data = pd.read_csv('data/modified_supermarkt_sales_plus.csv')
+
 
 def create_pie_figure(data, group_by):
     grouped_data = data.groupby(group_by)['Total'].sum().reset_index()
@@ -17,7 +19,6 @@ def create_bar_figure(data, group_by):
     fig = px.bar(sales_over_time, x=group_by, y='Total', title=f'Sales Trends Over {group_by}', color='Total')
     return fig
 
-
 def create_sales_by_city_map(data):
     city_sales = data.groupby('City').agg({'Total': 'sum', 'Latitude': 'mean', 'Longitude': 'mean'}).reset_index()
     fig = px.scatter_mapbox(city_sales, lat="Latitude", lon="Longitude", size="Total", color="Total", text="City",
@@ -27,9 +28,11 @@ def create_sales_by_city_map(data):
                       margin={"r": 0, "t": 0, "l": 0, "b": 0})
     return fig
 
+
 fig_product_line = create_pie_figure(data, 'Product_line')
 fig_city = create_pie_figure(data, 'City')
 fig_customer_type = create_pie_figure(data, 'Customer_type')
+
 
 with tgb.Page() as Overview:
     # Sales by City Map
@@ -43,3 +46,4 @@ with tgb.Page() as Overview:
     tgb.chart(figure="{create_bar_figure(data, 'Time')}")
         
     tgb.chart(figure="{create_bar_figure(data, 'Date')}")
+    

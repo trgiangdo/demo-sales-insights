@@ -42,7 +42,6 @@ fig_city = create_perc_fig(data, 'City')
 fig_gender = create_perc_fig(data, 'Gender')
 fig_customer_type = create_perc_fig(data, 'Customer_type')
 
-import time
 
 def on_change(state, var_name, var_value):
     if var_name in ['city', 'customer_type', 'gender']:
@@ -62,6 +61,7 @@ customer_type = ["Normal", "Member"]
 gender = ["Male", "Female"]
 city = ["Bangkok", "Chiang Mai", "Vientiane", "Luang Prabang"]
 
+
 with tgb.Page() as Analysis:   
     with tgb.layout(columns="1 1 1"):
         tgb.selector(value="{customer_type}", lov=customer_type, multiple=True, dropdown=True, class_name="fullwidth", label="Customer Type")
@@ -75,4 +75,3 @@ with tgb.Page() as Analysis:
         tgb.chart(figure="{fig_gender}")
         tgb.chart(figure="{fig_product_line}")
         
-
