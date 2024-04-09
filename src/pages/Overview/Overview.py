@@ -14,7 +14,7 @@ def create_pie_figure(data, group_by):
 
 def create_bar_figure(data, group_by):
     sales_over_time = data.groupby(group_by)['Total'].sum().reset_index()
-    fig = px.bar(sales_over_time, x=group_by, y='Total', title='Sales Trends Over Time', color='Total')
+    fig = px.bar(sales_over_time, x=group_by, y='Total', title=f'Sales Trends Over {group_by}', color='Total')
     return fig
 
 

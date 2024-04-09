@@ -8,6 +8,10 @@ Create and select **scenarios**
 <scenario|part|render={selected_scenario}|
 # **Prediction**{: .color-primary} page
 
+Predict **company sales** depending on the holidays that employees take. Create different scenarios and choose the best one.
+
+Here are two dataframes representing employee holidays ([High](data/holiday_high.csv) and [Low](data/holiday_low.csv)) that you can upload to the application.
+
 <|3 5|layout|
 <date|
 #### Level
