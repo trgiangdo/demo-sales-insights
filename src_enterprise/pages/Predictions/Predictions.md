@@ -18,7 +18,7 @@ Here are two dataframes representing employee holidays ([High](data/holiday_high
 
 A parameter to choose how holidays impact your predictions.
 
-<|{selected_level}|slider|on_change=on_change_params|not continuous|min=70|max=150|active={is_admin.get_traits(credentials)}|>>
+<|{selected_level}|slider|on_change=on_change_params|not continuous|min=70|max=150|active={is_admin.get_traits(credentials)}|>
 |date>
 
 <country|
@@ -29,7 +29,7 @@ Upload the CSV of employee holidays:
 <|{dn_holiday}|data_node|expanded=False|>
 
 
-<|{selected_holiday}|file_selector|label=Holiday|on_action=on_change_params|active={is_admin.get_traits(credentials)}|>>
+<|{selected_holiday}|file_selector|label=Holiday|on_action=on_change_params|active={is_admin.get_traits(credentials)}|>
 |country>
 |>
 

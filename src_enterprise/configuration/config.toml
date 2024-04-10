@@ -6,6 +6,7 @@ scope = "GLOBAL:SCOPE"
 path = "data/modified_supermarkt_sales_plus.csv"
 
 [DATA_NODE.holiday]
+storage_type = "csv"
 
 [DATA_NODE.level]
 default_data = "1:int"
@@ -45,7 +46,7 @@ skippable = "False:bool"
 [TASK.task_train_xgboost]
 function = "algorithms.algorithms.train_xgboost:function"
 inputs = [ "final_data:SECTION",]
-outputs = [ "model_xgboost:SECTION", "model_xgboost:SECTION" ]
+outputs = [ "model_xgboost:SECTION",]
 skippable = "False:bool"
 
 [TASK.task_forecast_xgboost]

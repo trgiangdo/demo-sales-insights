@@ -18,4 +18,6 @@ Please refer to https://docs.taipy.io/en/latest/manuals/gui/pages for more detai
 
 from taipy.gui import Markdown
 
+selected_data_node = None
+
 Admin = Markdown("pages/Admin/Admin.md")

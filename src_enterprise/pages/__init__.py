@@ -12,5 +12,5 @@
 from .root import root_page
 from .Overview.Overview import Overview, data
 from .Analysis.Analysis import Analysis
-from .Predictions.Predictions import Predictions, selected_data_node, selected_scenario
-from .Admin.Admin import Admin
+from .Predictions.Predictions import Predictions, selected_scenario
+from .Admin.Admin import Admin, selected_data_node
